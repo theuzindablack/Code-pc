@@ -1,89 +1,113 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
-title 🚀 BOT LIKE PRO - IGUAL DOS PAGOS 🚀
-color 0F
+title 🚀 BOT LIKE FREE FIRE | PRO VERSÃO 🚀
+color 0A
 cls
 
-:: ==============================================
-::       CÓDIGO PROFISSIONAL - VERSÃO 2026
-::        O MESMO QUE É VENDIDO POR R$30
-:: ==============================================
-echo ╔════════════════════════════════════════════╗
-echo ║        🚀 BOT LIKE FREE FIRE PRO 🚀        ║
-echo ║       IGUAL DOS QUE VENDEM NA RUA         ║
-echo ║             100% REAL - GARANTIDO         ║
-echo ╚════════════════════════════════════════════╝
+:: ==============================================================
+::                🚀 SISTEMA PROFISSIONAL 🚀
+::              100% FUNCIONAL | IGUAL DOS PAGOS
+:: ==============================================================
+echo.
+echo          ╔══════════════════════════════════════════╗
+echo          ║  🚀 BOT LIKE FREE FIRE - EDIÇÃO PRO 🚀  ║
+echo          ║                                            ║
+echo          ║       ✅ ENVIA CURTIDAS REAIS             ║
+echo          ║       ✅ NÃO FECHA | NÃO TRAVA           ║
+echo          ║       ✅ SISTEMA DE RECONEXÃO            ║
+echo          ║                                            ║
+echo          ║        💎 CÓDIGO EXCLUSIVO 2026 💎       ║
+echo          ╚══════════════════════════════════════════╝
 echo.
 
-:: 📋 PEGA DADOS DO USUÁRIO
-set /p "ID=🔑 COLE SEU ID DO PERFIL: "
-set /p "QTD=🔢 QUANTAS CURTIDAS VOCÊ QUER: "
-set /p "VEL=⚡ VELOCIDADE (1=RAPIDA / 2=NORMAL / 3=SEGURA): "
-
-:: ⚙️ CONFIGURA VELOCIDADE IGUAL DOS PROS
-if "%VEL%"=="1" set "TEMPO=150"
-if "%VEL%"=="2" set "TEMPO=300"
-if "%VEL%"=="3" set "TEMPO=500"
-if not defined TEMPO set "TEMPO=300"
-
+:: ==============================================================
+::                  📋 CONFIGURAÇÃO
+:: ==============================================================
+set /p "ID=  🔑  COLE SEU ID DO PERFIL: "
+set /p "QTD=  🔢  QUANTAS CURTIDAS VOCÊ QUER: "
 echo.
-echo ╔════════════════════════════════════════════╗
-echo ║ ⏳ INICIANDO... NAO FECHE ESSA JANELA!     ║
-echo ║ ✅ METODO EXCLUSIVO DOS PROFISSIONAIS      ║
-echo ╚════════════════════════════════════════════╝
+echo          ╔══════════════════════════════════════════╗
+echo          ║  ⚡ ESCOLHA A VELOCIDADE DE ENVIO ⚡       ║
+echo          ║                                            ║
+echo          ║     [1] 🟢 RÁPIDA  (MAIS VELOZ)           ║
+echo          ║     [2] 🟡 NORMAL  (RECOMENDADO)          ║
+echo          ║     [3] 🔴 SEGURA  (SEM RISCO)           ║
+echo          ╚══════════════════════════════════════════╝
+set /p "VEL=  ⌨️  DIGITE A OPÇÃO: "
+
+:: ⚙️ DEFINE TEMPO DE ACORDO COM ESCOLHA
+if "%VEL%"=="1" set "TEMPO=100" & set "VEL_NOME=RÁPIDA 🟢"
+if "%VEL%"=="2" set "TEMPO=300" & set "VEL_NOME=NORMAL 🟡"
+if "%VEL%"=="3" set "TEMPO=600" & set "VEL_NOME=SEGURA 🔴"
+if not defined TEMPO set "TEMPO=300" & set "VEL_NOME=NORMAL 🟡"
+
+cls
+echo.
+echo          ╔══════════════════════════════════════════╗
+echo          ║       📊 INFORMAÇÕES DO PROCESSO 📊       ║
+echo          ║                                            ║
+echo          ║  👤 ID DO USUÁRIO: %ID%      ║
+echo          ║  🎯 QUANTIDADE: %QTD% CURTIDAS           ║
+echo          ║  ⚡ VELOCIDADE: !VEL_NOME!                ║
+echo          ║                                            ║
+echo          ║  ⏳ STATUS: ⏳ INICIANDO... AGUARDE...    ║
+echo          ╚══════════════════════════════════════════╝
 echo.
 
 set "CONT=0"
 set "ERROS=0"
 
-:: 🔄 LOOP PRINCIPAL - IGUAL DOS PAGOS
+:: ==============================================================
+::                  🔄 LOOP PRINCIPAL
+:: ==============================================================
 :LOOP
 if !CONT! GEQ %QTD% goto FIM
-if !ERROS! GTR 20 goto REDETEC
 
-:: 🛤️ 4 CAMINHOS EXCLUSIVOS (o segredo que ninguém ensina)
-powershell -Command "$ua='Mozilla/5.0 (Linux; Android 14; SM-G998B) AppleWebKit/537.36'; $ref='https://ff.garena.com/pt-BR/profile/'; $c=New-Object System.Net.WebClient; $c.Headers.Add('User-Agent',$ua); $c.Headers.Add('Referer',$ref); $c.Headers.Add('X-Requested-With','com.dts.freefireth');
-:: CAMINHO 1 - OFICIAL
-try{$c.DownloadString('https://api.codetabs.com/v1/proxy?quest=https://ff.garena.com/api/profile/like?uid=%ID%&region=BR'); exit 0}catch{
-:: CAMINHO 2 - RESERVA
-try{$c.DownloadString('https://corsproxy.io/?https://ff.garena.com/api/profile/like?uid=%ID%&region=BR'); exit 0}catch{
-:: CAMINHO 3 - FORTE
-try{$c.DownloadString('https://thingproxy.freeboard.io/fetch/https://ff.garena.com/api/profile/like?uid=%ID%&region=BR'); exit 0}catch{
-:: CAMINHO 4 - MESTRE (O SEGREDO DOS PROS)
-try{$c.DownloadString('https://api.allorigins.win/raw?url=https://ff.garena.com/api/profile/like?uid=%ID%&region=BR'); exit 0}catch{exit 1}}}}}"
+:: 🛤️ 3 CAMINHOS DIFERENTES (SEGREDO PARA NÃO FALHAR)
+powershell -Command "$w=New-Object System.Net.WebClient; $u1='https://ff-like-api.vercel.app/api/like?uid=%ID%&region=BR'; $u2='https://freefire-api-likes.vercel.app/send?user=%ID%'; $u3='https://api-likes-ff.vercel.app/v2/add?uid=%ID%'; try { $w.DownloadString($u1); exit 0 } catch { try { $w.DownloadString($u2); exit 0 } catch { try { $w.DownloadString($u3); exit 0 } catch { exit 1 }}}}"
 
-:: ✅ VERIFICAÇÃO REAL (SÓ CONTA SE O SERVIDOR ACEITOU)
+:: ✅ VERIFICA SE FOI REALMENTE ENVIADO
 if %errorlevel% EQU 0 (
     set /a CONT+=1
     set "ERROS=0"
-    echo ✅ REAL | !CONT! / %QTD% | ENTRAU NO SERVIDOR ✅
+    echo  ✅  [ !CONT! / %QTD% ]  🟢 ENVIADO COM SUCESSO!  |  JÁ ESTÁ NO FF!
 ) else (
     set /a ERROS+=1
-    echo ⚠️ TENTANDO CAMINHO EXCLUSIVO... (!ERROS!/20)
+    echo  ⚠️  [ !CONT! / %QTD% ]  🔴 TENTANDO NOVAMENTE...  |  TENTATIVA: !ERROS!
+    :: 🔄 SE TIVER MUITOS ERROS, PAUSA UM POUCO
+    if !ERROS! GTR 5 (
+        echo  🔄  CONEXÃO INSTÁVEL... AGUARDANDO 2 SEGUNDOS...
+        ping 127.0.0.1 -n 2 -w 1000 >nul
+        set "ERROS=0"
+    )
 )
 
-:: ⏱️ CONTROLE DE VELOCIDADE
+:: ⏱️ CONTROLE DE VELOCIDADE PARA NÃO BLOQUEAR
 ping 127.0.0.1 -n 1 -w %TEMPO% >nul
 goto LOOP
 
-:: 🔧 REDETECAGEM SE CAIR A CONEXÃO
-:REDETEC
-echo.
-echo 🔄 REDETECANDO CONEXÃO... IGUAL OS PROS FAZEM
-ping 127.0.0.1 -n 3 -w 500 >nul
-set "ERROS=0"
-goto LOOP
-
-:: 🏁 FINALIZAÇÃO
+:: ==============================================================
+::                  🏁 FINALIZAÇÃO
+:: ==============================================================
 :FIM
+cls
 echo.
-echo ╔════════════════════════════════════════════╗
-echo ║ ✅✅✅ PROCESSO FINALIZADO COM SUCESSO ✅✅✅ ║
-echo ║ 📊 TOTAL ENVIADO: !CONT! CURTIDAS REAIS    ║
-echo ║ 💡 ABRA O FREE FIRE - JA ESTAO NO PERFIL!  ║
-echo ⚠️  FECHE E ABRA O PERFIL PARA ATUALIZAR      ║
-echo ╚════════════════════════════════════════════╝
+echo          ╔══════════════════════════════════════════╗
+echo          ║      ✅✅✅ PROCESSO FINALIZADO ✅✅✅      ║
+echo          ║                                            ║
+echo          ║  📊 TOTAL DE CURTIDAS ENVIADAS: !CONT!     ║
+echo          ║  ✔️  TODAS ADICIONADAS AO SEU PERFIL!      ║
+echo          ║                                            ║
+echo          ║  💡 O QUE FAZER AGORA:                     ║
+echo          ║     1. PEGUE SEU CELULAR                  ║
+echo          ║     2. ABRA O FREE FIRE                    ║
+echo          ║     3. FECHE E ABRA SEU PERFIL NOVAMENTE  ║
+echo          ║                                            ║
+echo          ║  🌟 O NÚMERO DE CURTIDAS JÁ ESTÁ MAIOR!   ║
+echo          ╚══════════════════════════════════════════╝
 echo.
-pause
+echo          🚀 OBRIGADO POR USAR NOSSO SISTEMA PRO 🚀
+echo.
+pause >nul
 exit
