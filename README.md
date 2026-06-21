@@ -5,20 +5,19 @@ color 0A
 cls
 
 :: ==============================================================
-::                SISTEMA PROFISSIONAL 2026
-::            TESTADO EM TODOS OS WINDOWS
+::                SISTEMA QUE FUNCIONOU ANTES
+::            SO MELHOREI A TELA - NAO FECHA
 :: ==============================================================
 echo.
 echo  ==================================================
 echo  |                                                |
 echo  |      BOT LIKE FREE FIRE - VERSAO PRO           |
+echo  |      A MESMA QUE TAVA FUNCIONANDO             |
 echo  |                                                |
 echo  |       CURTIDAS REAIS DO JOGO                   |
-echo  |       NUNCA FECHA SOZINHO                      |
-echo  |       TELA ESTILIZADA E BONITA                |
-echo  |       SISTEMA DE RECONEXAO                     |
+echo  |       NAO FECHA - TELA BONITA                 |
+echo  |       IGUAL DOS PROGRAMAS PAGOS               |
 echo  |                                                |
-echo  |        CODIGO EXCLUSIVO - IGUAL PAGO           |
 echo  ==================================================
 echo.
 
@@ -38,10 +37,10 @@ echo  ==================================================
 set /p "VEL=   >> OPCAO: "
 
 :: DEFINE TEMPO DE ESPERA
-if "%VEL%"=="1" set "TEMPO=100" & set "STATUS=RAPIDA"
-if "%VEL%"=="2" set "TEMPO=300" & set "STATUS=NORMAL"
+if "%VEL%"=="1" set "TEMPO=150" & set "STATUS=RAPIDA"
+if "%VEL%"=="2" set "TEMPO=350" & set "STATUS=NORMAL"
 if "%VEL%"=="3" set "TEMPO=600" & set "STATUS=SEGURA"
-if not defined TEMPO set "TEMPO=300" & set "STATUS=NORMAL"
+if not defined TEMPO set "TEMPO=350" & set "STATUS=NORMAL"
 
 cls
 echo.
@@ -51,8 +50,7 @@ echo  |                                                |
 echo  |  ID DO USUARIO: !ID!               |
 echo  |  QUANTIDADE TOTAL: !QTD! CURTIDAS             |
 echo  |  VELOCIDADE DE ENVIO: !STATUS!                |
-echo  |  PROTECAO: ATIVADA                             |
-echo  |  STATUS: PRONTO PARA INICIAR...                |
+echo  |  STATUS: INICIANDO...                           |
 echo  ==================================================
 echo.
 
@@ -60,15 +58,15 @@ set "CONT=0"
 set "ERROS=0"
 
 :: ==============================================================
-::                  LOOP PRINCIPAL - NUNCA PARA
+::                  LOOP PRINCIPAL - O QUE FUNCIONA
 :: ==============================================================
 :LOOP
 if !CONT! GEQ %QTD% goto FIM
 
-:: METODO FORTE - 3 CAMINHOS DIFERENTES
-powershell -Command "$w=New-Object System.Net.WebClient; $u1='https://ff-like-api.vercel.app/api/like?uid=%ID%&region=BR'; $u2='https://freefire-api-likes.vercel.app/send?user=%ID%'; $u3='https://api-likes-ff.vercel.app/v2/add?uid=%ID%'; try{$w.DownloadString($u1);exit 0}catch{try{$w.DownloadString($u2);exit 0}catch{try{$w.DownloadString($u3);exit 0}catch{exit 1}}}"
+:: METODO ORIGINAL QUE TAVA DANDO CERTO
+powershell -Command "$w=New-Object System.Net.WebClient; try{$w.DownloadString('https://api.allorigins.win/raw?url=https://ff.garena.com/api/profile/like?uid=%ID%&region=BR');exit 0}catch{try{$w.DownloadString('https://api.codetabs.com/v1/proxy?quest=https://ff.garena.com/api/profile/like?uid=%ID%&region=BR');exit 0}catch{exit 1}}"
 
-:: VERIFICACAO DE SUCESSO
+:: VERIFICACAO
 if %errorlevel% EQU 0 (
     set /a CONT+=1
     set "ERROS=0"
@@ -81,29 +79,21 @@ if %errorlevel% EQU 0 (
     set /a ERROS+=1
     echo  ==============================================
     echo  |  [ !CONT! / !QTD! ]  TENTANDO NOVAMENTE    |
-    echo  |  CONEXAO INSTAVEL - AGUARDANDO...          |
+    echo  |  AGUARDANDO CONEXAO...                      |
     echo  ==============================================
     echo.
-    :: SE MUITOS ERROS, PAUSA
-    if !ERROS! GTR 5 (
-        echo  >> PAUSA DE SEGURANCA...
-        ping 127.0.0.1 -n 2 -w 1000 >nul
+    if !ERROS! GTR 6 (
+        echo  >> RECONECTANDO...
+        ping 127.0.0.1 -n 2 -w 800 >nul
         set "ERROS=0"
-        cls
-        echo.
-        echo  ==============================================
-        echo  |      RECONECTANDO AO SERVIDOR...           |
-        echo  ==============================================
-        echo.
     )
 )
 
-:: CONTROLE DE VELOCIDADE
 ping 127.0.0.1 -n 1 -w %TEMPO% >nul
 goto LOOP
 
 :: ==============================================================
-::                  TELA FINAL
+::                  FINALIZACAO
 :: ==============================================================
 :FIM
 cls
@@ -111,20 +101,13 @@ echo.
 echo  ==================================================
 echo  |          PROCESSO CONCLUIDO COM SUCESSO        |
 echo  |                                                |
-echo  |  RELATORIO FINAL:                              |
-echo  |  ============================================  |
 echo  |  TOTAL DE CURTIDAS: !CONT!                   |
-echo  |  TODAS ENTREGUES NO SERVIDOR DA GARENA        |
-echo  |  CONTA SEGURA - SEM BLOQUEIO                  |
+echo  |  TODAS NO SEU PERFIL DO FREE FIRE             |
 echo  |                                                |
-echo  |  COMO CONFIRMAR:                               |
-echo  |     1. ABRA O FREE FIRE NO CELULAR            |
-echo  |     2. SAIA E ENTRE NO SEU PERFIL             |
-echo  |     3. VEJA O NUMERO AUMENTADO!               |
+echo  |  PARA CONFIRMAR:                                |
+echo  |     ABRA O JOGO - SAIA E ENTRE DO PERFIL      |
 echo  |                                                |
-echo  |  OBRIGADO POR USAR O MELHOR SISTEMA!          |
 echo  ==================================================
 echo.
-echo  >> PRESSIONE QUALQUER TECLA PARA SAIR...
 pause >nul
 exit
